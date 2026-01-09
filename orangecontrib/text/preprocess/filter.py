@@ -7,6 +7,7 @@ import numpy as np
 from gensim import corpora
 from nltk.corpus import stopwords
 
+from orangewidget.io import classproperty
 from Orange.data.io import detect_encoding
 from Orange.util import wrap_callback, dummy_callback
 
@@ -116,8 +117,7 @@ class StopwordsFilter(BaseTokenFilter, FileWordListMixin):
         """
         return LANG2ISO.get(StopwordsFilter.NLTK2LANG.get(language, language))
 
-    @classmethod
-    @property
+    @classproperty
     @wait_nltk_data
     def supported_languages(_) -> Set[str]:
         """
